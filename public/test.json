@@ -1,0 +1,44 @@
+[
+   {
+      "commenterEmail": "robin@gmail.com",
+      "text": "Great post! Very informative.",
+      "dateTime": "25 Jun 2021 | 05:56PM",
+      "post": "6560bd5f1500f3d1139a60a5"
+   },
+   {
+      "commenterEmail": "user123@gmail.com",
+      "text": "I completely agree with your insights.",
+      "dateTime": "26 Jun 2021 | 02:30PM",
+      "post": "6560bd5f1500f3d1139a60a5"
+   },
+   {
+      "commenterEmail": "jane_doe@gmail.com",
+      "text": "This topic is fascinating. Thanks for sharing!",
+      "dateTime": "27 Jun 2021 | 09:15AM",
+      "post": 4444444
+   },
+   {
+      "commenterEmail": "robin@gmail.com",
+      "text": "Interesting perspective, Robin!",
+      "dateTime": "28 Jun 2021 | 08:45PM",
+      "post": "6560bd5f1500f3d1139a60a6"
+   },
+   {
+      "commenterEmail": "samuel@gmail.com",
+      "text": "I learned something new from your post. Thanks!",
+      "dateTime": "29 Jun 2021 | 11:20AM",
+      "post": "6560bd5f1500f3d1139a60a6"
+   },
+   {
+      "commenterEmail": "alice@example.com",
+      "text": "Nice work! Keep it up.",
+      "dateTime": "30 Jun 2021 | 04:10PM",
+      "post": "6560bd5f1500f3d1139a60a7"
+   },
+   {
+      "commenterEmail": "robin@gmail.com",
+      "text": "Thank you all for the engaging comments!",
+      "dateTime": "01 Jul 2021 | 01:55PM",
+      "post": "6560bd5f1500f3d1139a60a8"
+   }
+]
