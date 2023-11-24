@@ -51,7 +51,14 @@ const useRegister = () => {
                   });
 
                   // Save user to database
-                  saveUser({ email: result.user?.email, role: "patient" });
+                  const userInfo = {
+                     name: data.name,
+                     email: result.user?.email,
+                     image: uploadResponse.data.data.display_url,
+                     isPremiumMember: false,
+                     role: "member",
+                  };
+                  saveUser(userInfo);
 
                   // Show toast
                   toast.update(toastMsg, {
