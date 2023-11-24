@@ -15,7 +15,14 @@ const useGoogleLogin = () => {
          .then((result) => {
             if (result.user) {
                // Save user to database
-               saveUser({ email: result.user?.email, role: "patient" });
+               const userInfo = {
+                  name: result.user?.displayName,
+                  email: result.user?.email,
+                  image: result.user?.photoURL,
+                  isPremiumMember: false,
+                  role: "member",
+               };
+               saveUser(userInfo);
                showToast("Login Successful!", "success");
                navigate(state ? state.prevUrl : "/");
             }
