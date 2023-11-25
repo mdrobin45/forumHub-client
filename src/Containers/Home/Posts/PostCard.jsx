@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaRegThumbsUp, FaTags } from "react-icons/fa";
 import { FaMessage, FaRegThumbsDown } from "react-icons/fa6";
 import { IoMdStopwatch } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { Tag } from "rsuite";
 import usePublicRequest from "../../../Hooks/Shared/API/PublicRequest/usePublicRequest";
 
@@ -14,6 +15,9 @@ const PostCard = ({ post }) => {
       queryKey: ["commentsCount", _id],
       queryFn: () => countComment(_id),
    });
+
+   const shortDes = description.split(" ").slice(0, 30).join(" ");
+
    return (
       <div className="flex gap-10 my-4 border p-3">
          <div>
@@ -40,7 +44,12 @@ const PostCard = ({ post }) => {
                      <span>{postTime}</span>
                   </div>
                </div>
-               <p className="text-gray-400">{description}</p>
+               <p className="text-gray-400">
+                  {shortDes}{" "}
+                  <Link className="text-secondary" to="/">
+                     See more...
+                  </Link>
+               </p>
                <div className="flex items-center gap-4 pt-4">
                   <div>
                      <FaRegThumbsUp className="text-xl" />
