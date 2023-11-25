@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners";
 import useAuth from "../Hooks/Shared/useAuth";
 
 const PrivateRoute = ({ children }) => {
-   const { pathname } = useLocation();
+   const location = useLocation();
    const { user, isLoading } = useAuth();
 
    if (isLoading) {
@@ -15,7 +15,7 @@ const PrivateRoute = ({ children }) => {
    }
 
    if (!user) {
-      return <Navigate to="/login" state={{ from: pathname }} />;
+      return <Navigate to="/login" state={{ from: location.pathname }} />;
    }
 
    return children;

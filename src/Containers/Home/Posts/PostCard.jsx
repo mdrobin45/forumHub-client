@@ -46,7 +46,7 @@ const PostCard = ({ post }) => {
                </div>
                <p className="text-gray-400">
                   {shortDes}{" "}
-                  <Link className="text-secondary" to="/">
+                  <Link className="text-secondary" to={`/post/${_id}`}>
                      See more...
                   </Link>
                </p>

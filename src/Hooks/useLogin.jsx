@@ -36,7 +36,7 @@ const useLogin = () => {
                   autoClose: 1500,
                });
                if (state !== null) {
-                  navigate(state.prevUrl);
+                  navigate(state.from);
                } else {
                   navigate("/");
                }

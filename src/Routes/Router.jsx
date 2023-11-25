@@ -6,6 +6,7 @@ import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import SinglePost from "../Pages/SinglePost/SinglePost";
 
 const router = createBrowserRouter([
    {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
          {
             path: "/",
             element: <Home />,
+         },
+         {
+            path: "/post/:id",
+            element: <SinglePost />,
          },
          {
             path: "/blog",
