@@ -15,20 +15,27 @@ const usePublicRequest = () => {
       return data;
    };
 
-   // Post comment
-   const postComment = async (commentInfo) => {
-      const { data } = await axiosPublic.post(`/comments`, commentInfo);
-      return data;
-   };
-
    // Generate JWT token
    const createToken = async (email) => {
       const { data } = await axiosPublic.post("/jwt", { email });
       return data;
    };
 
+   // Count total comment
    const countComment = async (id) => {
       const { data } = await axiosPublic.get(`/comments/count?id=${id}`);
+      return data;
+   };
+
+   // Get user role
+   const getUserRole = async (email) => {
+      const { data } = await axiosPublic.get(`/users/role?email=${email}`);
+      return data;
+   };
+
+   // Logout user
+   const logoutUser = async () => {
+      const { data } = await axiosPublic.post("/logout");
       return data;
    };
 
@@ -44,7 +51,8 @@ const usePublicRequest = () => {
       getAllPosts,
       countComment,
       getSinglePostData,
-      postComment,
+      logoutUser,
+      getUserRole,
    };
 };
 

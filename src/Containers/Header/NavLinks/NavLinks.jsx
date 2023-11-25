@@ -12,6 +12,12 @@ const NavLinks = () => {
                   Home
                </NavLink>
                <NavLink
+                  to="/membership"
+                  className="rounded-md uppercase px-3 py-2 text-sm font-medium"
+                  aria-current="page">
+                  Membership
+               </NavLink>
+               <NavLink
                   to="/faq"
                   className="rounded-md uppercase px-3 py-2 text-sm font-medium">
                   Faq

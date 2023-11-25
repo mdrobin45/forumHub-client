@@ -15,6 +15,7 @@ import usePublicRequest from "../Hooks/Shared/API/PublicRequest/usePublicRequest
 
 export const AuthContext = createContext(null);
 const AuthContextProvider = ({ children }) => {
+   const { logoutUser } = usePublicRequest();
    const [user, setUser] = useState(null);
    const [isLoading, setIsLoading] = useState(true);
    const { createToken } = usePublicRequest();
@@ -70,13 +71,9 @@ const AuthContextProvider = ({ children }) => {
 
          // Save token in local storage when authenticate user
          if (currentUser) {
-            createToken(currentUser?.email).then((res) => {
-               if (res.token) {
-                  localStorage.setItem("access_token", res.token);
-               }
-            });
+            createToken(currentUser?.email);
          } else {
-            localStorage.removeItem("access_token");
+            logoutUser();
          }
 
          setIsLoading(false);
@@ -84,7 +81,7 @@ const AuthContextProvider = ({ children }) => {
       return () => {
          unSubscribe();
       };
-   }, [createToken]);
+   }, [createToken, logoutUser]);
 
    const authInfo = {
       user,

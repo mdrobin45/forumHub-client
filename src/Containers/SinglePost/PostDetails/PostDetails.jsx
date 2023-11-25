@@ -16,7 +16,7 @@ import {
    LinkedinShareButton,
 } from "react-share";
 import { Tag } from "rsuite";
-import usePublicRequest from "../../../Hooks/Shared/API/PublicRequest/usePublicRequest";
+import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
 import useAuth from "../../../Hooks/Shared/useAuth";
 import { showToast } from "../../../Utilities/toast";
 
@@ -24,7 +24,7 @@ const PostDetails = ({ postData }) => {
    const { id } = useParams();
    const { user } = useAuth();
    const { register, handleSubmit } = useForm();
-   const { postComment } = usePublicRequest();
+   const { postComment } = useSecureRequest();
    const { title, description, upVote, downVote, tags, postTime } = postData;
 
    const shareUrl =

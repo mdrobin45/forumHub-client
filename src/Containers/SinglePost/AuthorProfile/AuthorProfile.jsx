@@ -1,16 +1,25 @@
 import { FaEnvelope, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
+import vipBadge from "../../../assets/images/vip-card.png";
 
 const AuthorProfile = ({ postData }) => {
-   const { name, image } = postData.author;
+   const { name, image, isPremiumMember } = postData.author;
    return (
       <div className="p-6 dark:bg-gray-900 dark:text-gray-100 border rounded shadow-md my-10">
-         <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-            <img
-               src={image}
-               alt="Profile"
-               className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
-            />
+         <div className=" flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+            <div className="w-52">
+               <img
+                  src={image}
+                  alt="Profile"
+                  className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-700"
+               />
+               {isPremiumMember ? (
+                  <img className="w-12" src={vipBadge} alt="Vip" />
+               ) : (
+                  "normal"
+               )}
+            </div>
+
             <div className="flex flex-col justify-center">
                <h4 className="text-lg font-semibold text-center md:text-left">
                   {name}
