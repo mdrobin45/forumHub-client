@@ -58,6 +58,26 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // get all users
+   const getAllUsers = async () => {
+      const { data } = await axiosSecure.get("/users/all");
+      return data;
+   };
+
+   // Make admin
+   const makeAdmin = async (email) => {
+      const { data } = await axiosSecure.patch(`/users?email=${email}`, {
+         role: "admin",
+      });
+      return data;
+   };
+
+   // Create announcement
+   const createAnnouncement = async (annData) => {
+      const { data } = await axiosSecure.post("/announce", annData);
+      return data;
+   };
+
    return {
       postComment,
       changeUserMembership,
@@ -67,6 +87,9 @@ const useSecureRequest = () => {
       userPosts,
       getComments,
       reportComment,
+      getAllUsers,
+      makeAdmin,
+      createAnnouncement,
    };
 };
 

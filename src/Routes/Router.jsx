@@ -4,6 +4,9 @@ import MainLayout from "../Layouts/MainLayout";
 import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Contact from "../Pages/Contact/Contact";
+import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile/AdminProfile";
+import CreateAnnouncement from "../Pages/Dashboard/AdminDashboard/CreateAnnouncement/CreateAnnouncement";
+import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
 import AddPost from "../Pages/Dashboard/UserDashboard/AddPost";
 import Comments from "../Pages/Dashboard/UserDashboard/Comments/Comments";
 import MyPosts from "../Pages/Dashboard/UserDashboard/MyPosts";
@@ -106,6 +109,24 @@ const router = createBrowserRouter([
                   <Comments />
                </PrivateRoute>
             ),
+         },
+      ],
+   },
+   {
+      path: "/admin",
+      element: <Dashboard />,
+      children: [
+         {
+            path: "admin-profile",
+            element: <AdminProfile />,
+         },
+         {
+            path: "manage-users",
+            element: <ManageUsers />,
+         },
+         {
+            path: "create-announce",
+            element: <CreateAnnouncement />,
          },
       ],
    },

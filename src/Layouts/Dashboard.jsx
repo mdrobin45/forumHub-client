@@ -27,12 +27,12 @@ const adminLinks = [
    {
       linkText: "My Profile",
       icon: <FaUserCircle className="text-2xl" />,
-      url: "/admin/my-profile",
+      url: "/admin/admin-profile",
    },
    {
       linkText: "Manage Users",
       icon: <FaUsers className="text-2xl" />,
-      url: "/admin/add-post",
+      url: "/admin/manage-users",
    },
    {
       linkText: "Reported Comments",
