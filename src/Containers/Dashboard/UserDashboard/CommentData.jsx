@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { Button } from "rsuite";
+import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import { showToast } from "../../../Utilities/toast";
 import CommentModal from "./CommentModal";
 
 const CommentData = ({ comment }) => {
+   const { reportComment } = useSecureRequest();
    const [open, setOpen] = useState(false);
    const [textExceed, setTextExceed] = useState(false);
    const [reason, setReason] = useState(false);
    const { commenterEmail, text } = comment;
+   const [reportData, setReportData] = useState({
+      commenterEmail,
+      comment: text,
+   });
 
    const handleClose = () => setOpen(false);
    const handleOpen = () => setOpen(true);
@@ -21,11 +28,23 @@ const CommentData = ({ comment }) => {
 
    const feedbackChangeHandler = (e) => {
       const value = e.target.value;
+      setReportData((prevData) => ({ ...prevData, reason: value }));
+
       if (value != 0) {
          setReason(true);
       } else {
          setReason(false);
       }
+   };
+
+   // handle report comment
+   const handleReport = () => {
+      reportComment(reportData).then((res) => {
+         if (res.id) {
+            showToast("Report submitted", "success");
+            setReason(false);
+         }
+      });
    };
    return (
       <>
@@ -59,6 +78,7 @@ const CommentData = ({ comment }) => {
             </td>
             <td className="px-6 py-4">
                <Button
+                  onClick={handleReport}
                   appearance="primary"
                   color="red"
                   disabled={!reason ? true : false}

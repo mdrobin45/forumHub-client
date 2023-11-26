@@ -52,6 +52,12 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Add comment report
+   const reportComment = async (reportData) => {
+      const { data } = await axiosSecure.post(`/comments/report`, reportData);
+      return data;
+   };
+
    return {
       postComment,
       changeUserMembership,
@@ -60,6 +66,7 @@ const useSecureRequest = () => {
       AddPost,
       userPosts,
       getComments,
+      reportComment,
    };
 };
 
