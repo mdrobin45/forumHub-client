@@ -20,7 +20,7 @@ const userLinks = [
    {
       linkText: "My Posts",
       icon: <CgMenuGridR className="text-2xl" />,
-      url: "/user/my-post",
+      url: "/user/my-posts",
    },
 ];
 const adminLinks = [

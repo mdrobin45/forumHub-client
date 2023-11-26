@@ -40,7 +40,19 @@ const useSecureRequest = () => {
       return data;
    };
 
-   return { postComment, changeUserMembership, getUser, AddPost, userPosts };
+   const deletePost = async (id) => {
+      const { data } = await axiosSecure.delete(`/posts/${id}`);
+      return data;
+   };
+
+   return {
+      postComment,
+      changeUserMembership,
+      deletePost,
+      getUser,
+      AddPost,
+      userPosts,
+   };
 };
 
 export default useSecureRequest;

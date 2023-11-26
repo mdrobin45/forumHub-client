@@ -5,6 +5,7 @@ import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Contact from "../Pages/Contact/Contact";
 import AddPost from "../Pages/Dashboard/UserDashboard/AddPost";
+import MyPosts from "../Pages/Dashboard/UserDashboard/MyPosts";
 import MyProfile from "../Pages/Dashboard/UserDashboard/MyProfile";
 import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
@@ -86,6 +87,14 @@ const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <AddPost />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "my-posts",
+            element: (
+               <PrivateRoute>
+                  <MyPosts />
                </PrivateRoute>
             ),
          },

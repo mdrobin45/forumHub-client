@@ -13,7 +13,6 @@ const AddPostContainer = () => {
    const { dbUser } = useUser();
    const { register, handleSubmit } = useForm();
 
-   console.log(posts.length);
    // Form submit
    const formSubmit = (data) => {
       const postTime = moment().format("MM MMM YYYY");
