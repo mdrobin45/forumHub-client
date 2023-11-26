@@ -9,7 +9,7 @@ const usePublicRequest = () => {
       return data;
    };
 
-   // Get all posts
+   // Get Single post
    const getSinglePostData = async (id) => {
       const { data } = await axiosPublic.get(`/posts/${id}`);
       return data;

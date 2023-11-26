@@ -8,7 +8,7 @@ import usePublicRequest from "../../../Hooks/Shared/API/PublicRequest/usePublicR
 
 const PostCard = ({ post }) => {
    const { countComment } = usePublicRequest();
-   const { _id, title, description, tags, postTime, upVote, downVote, author } =
+   const { _id, title, description, tag, postTime, upVote, downVote, author } =
       post;
 
    const { data = 0 } = useQuery({
@@ -32,12 +32,10 @@ const PostCard = ({ post }) => {
                <h2 className="text-2xl font-bold">{title}</h2>
                <div className="flex items-center gap-4 py-4">
                   <div className="flex gap-2 items-center">
-                     {tags.map((tag, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                           <FaTags />
-                           <Tag size="md">{tag}</Tag>
-                        </div>
-                     ))}
+                     <div className="flex items-center gap-2">
+                        <FaTags />
+                        <Tag size="md">{tag}</Tag>
+                     </div>
                   </div>
                   <div className="flex text-gray-500 items-center gap-3">
                      <IoMdStopwatch />

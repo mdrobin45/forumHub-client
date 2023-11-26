@@ -1,7 +1,9 @@
+import AddPostContainer from "../../../Containers/Dashboard/UserDashboard/AddPostContainer";
+
 const AddPost = () => {
    return (
       <div>
-         <h1>addPost</h1>
+         <AddPostContainer />
       </div>
    );
 };
