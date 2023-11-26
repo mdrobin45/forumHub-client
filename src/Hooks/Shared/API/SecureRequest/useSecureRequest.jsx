@@ -58,6 +58,12 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Get reported comments
+   const getReportedComments = async () => {
+      const { data } = await axiosSecure.get("/comments/report/all");
+      return data;
+   };
+
    // get all users
    const getAllUsers = async () => {
       const { data } = await axiosSecure.get("/users/all");
@@ -90,6 +96,7 @@ const useSecureRequest = () => {
       getAllUsers,
       makeAdmin,
       createAnnouncement,
+      getReportedComments,
    };
 };
 

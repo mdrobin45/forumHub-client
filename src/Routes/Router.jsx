@@ -5,6 +5,7 @@ import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Contact from "../Pages/Contact/Contact";
 import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile/AdminProfile";
+import CommentReport from "../Pages/Dashboard/AdminDashboard/CommentReport/CommentReport";
 import CreateAnnouncement from "../Pages/Dashboard/AdminDashboard/CreateAnnouncement/CreateAnnouncement";
 import ManageUsers from "../Pages/Dashboard/AdminDashboard/ManageUsers/ManageUsers";
 import AddPost from "../Pages/Dashboard/UserDashboard/AddPost";
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
          {
             path: "create-announce",
             element: <CreateAnnouncement />,
+         },
+         {
+            path: "reported-comments",
+            element: <CommentReport />,
          },
       ],
    },
