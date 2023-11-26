@@ -53,7 +53,7 @@ const MyPostCard = ({ post }) => {
 
          <div className="flex items-center gap-3">
             <Link
-               to="/"
+               to={`/user/comments/${_id}`}
                className="inline-flex mt-4 items-center px-3 py-2 text-sm font-medium text-center text-white bg-secondary rounded-lg hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-secondary dark:focus:ring-secondary">
                See Comments
             </Link>

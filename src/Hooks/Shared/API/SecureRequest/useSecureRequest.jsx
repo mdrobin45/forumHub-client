@@ -40,8 +40,15 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Delete a post
    const deletePost = async (id) => {
       const { data } = await axiosSecure.delete(`/posts/${id}`);
+      return data;
+   };
+
+   // Get comments of a post
+   const getComments = async (id) => {
+      const { data } = await axiosSecure.get(`/comments/post?id=${id}`);
       return data;
    };
 
@@ -52,6 +59,7 @@ const useSecureRequest = () => {
       getUser,
       AddPost,
       userPosts,
+      getComments,
    };
 };
 

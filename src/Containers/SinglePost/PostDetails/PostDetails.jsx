@@ -25,7 +25,7 @@ const PostDetails = ({ postData }) => {
    const { user } = useAuth();
    const { register, handleSubmit } = useForm();
    const { postComment } = useSecureRequest();
-   const { title, description, upVote, downVote, tags, postTime } = postData;
+   const { title, description, upVote, downVote, tag, postTime } = postData;
 
    const shareUrl =
       "https://assignment-11-robin45r.netlify.app/assignments/654ba33466a89de3f0711c30";
@@ -74,11 +74,7 @@ const PostDetails = ({ postData }) => {
                   </p>
                   <div className="flex items-center gap-2">
                      <FaTags />
-                     {tags.map((tag, index) => (
-                        <Tag key={index} size="md">
-                           {tag}
-                        </Tag>
-                     ))}
+                     <Tag size="md">{tag}</Tag>
                   </div>
                </div>
                <div className="flex items-center gap-3">

@@ -5,6 +5,7 @@ import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Contact from "../Pages/Contact/Contact";
 import AddPost from "../Pages/Dashboard/UserDashboard/AddPost";
+import Comments from "../Pages/Dashboard/UserDashboard/Comments/Comments";
 import MyPosts from "../Pages/Dashboard/UserDashboard/MyPosts";
 import MyProfile from "../Pages/Dashboard/UserDashboard/MyProfile";
 import Faq from "../Pages/Faq/Faq";
@@ -95,6 +96,14 @@ const router = createBrowserRouter([
             element: (
                <PrivateRoute>
                   <MyPosts />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "comments/:id",
+            element: (
+               <PrivateRoute>
+                  <Comments />
                </PrivateRoute>
             ),
          },
