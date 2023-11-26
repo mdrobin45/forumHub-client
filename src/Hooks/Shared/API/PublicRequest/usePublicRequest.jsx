@@ -27,12 +27,6 @@ const usePublicRequest = () => {
       return data;
    };
 
-   // Get user role
-   const getUserRole = async (email) => {
-      const { data } = await axiosPublic.get(`/users/role?email=${email}`);
-      return data;
-   };
-
    // Logout user
    const logoutUser = async () => {
       const { data } = await axiosPublic.post("/logout");
@@ -52,7 +46,6 @@ const usePublicRequest = () => {
       countComment,
       getSinglePostData,
       logoutUser,
-      getUserRole,
    };
 };
 

@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
    const navigate = useNavigate();
 
    const axiosSecure = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: import.meta.env.VITE_SERVER_URL,
       withCredentials: true,
    });
 

@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import usePublicRequest from "./API/PublicRequest/usePublicRequest";
+import useSecureRequest from "./API/SecureRequest/useSecureRequest";
 import useAuth from "./useAuth";
 
-const useUserRole = () => {
+const useUser = () => {
    const { user } = useAuth();
-   const { getUserRole } = usePublicRequest();
+   const { getUser } = useSecureRequest();
 
    // Request server for getting user role
    const { isPending, data: dbUser = {} } = useQuery({
       queryKey: ["userRole", user],
-      queryFn: () => getUserRole(user?.email),
+      queryFn: () => getUser(user?.email),
    });
 
    const userRole = dbUser?.role;
 
-   return { userRole, isPending };
+   return { userRole, isPending, dbUser };
 };
 
-export default useUserRole;
+export default useUser;

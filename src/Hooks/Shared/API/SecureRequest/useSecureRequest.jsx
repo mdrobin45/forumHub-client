@@ -20,7 +20,13 @@ const useSecureRequest = () => {
       return data;
    };
 
-   return { postComment, changeUserMembership };
+   // Get user role
+   const getUser = async (email) => {
+      const { data } = await axiosSecure.get(`/users?email=${email}`);
+      return data;
+   };
+
+   return { postComment, changeUserMembership, getUser };
 };
 
 export default useSecureRequest;

@@ -1,8 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../Layouts/Dashboard";
 import MainLayout from "../Layouts/MainLayout";
 import Blog from "../Pages/Blog/Blog";
 import Checkout from "../Pages/Checkout/Checkout";
 import Contact from "../Pages/Contact/Contact";
+import AddPost from "../Pages/Dashboard/UserDashboard/AddPost";
+import MyProfile from "../Pages/Dashboard/UserDashboard/MyProfile";
 import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -61,6 +64,32 @@ const router = createBrowserRouter([
    {
       path: "/register",
       element: <Register />,
+   },
+   {
+      path: "/user",
+      element: (
+         <PrivateRoute>
+            <Dashboard />
+         </PrivateRoute>
+      ),
+      children: [
+         {
+            path: "my-profile",
+            element: (
+               <PrivateRoute>
+                  <MyProfile />
+               </PrivateRoute>
+            ),
+         },
+         {
+            path: "add-post",
+            element: (
+               <PrivateRoute>
+                  <AddPost />
+               </PrivateRoute>
+            ),
+         },
+      ],
    },
 ]);
 
