@@ -96,6 +96,14 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Search user
+   const searchUser = async (searchText) => {
+      const { data } = await axiosSecure.get(
+         `/users/search?search=${searchText}`
+      );
+      return data;
+   };
+
    return {
       postComment,
       changeUserMembership,
@@ -111,6 +119,7 @@ const useSecureRequest = () => {
       createAnnouncement,
       getReportedComments,
       increaseDownVote,
+      searchUser,
    };
 };
 
