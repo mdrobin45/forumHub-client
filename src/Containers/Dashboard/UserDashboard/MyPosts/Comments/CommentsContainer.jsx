@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
-import CommentData from "./commentData";
-
+import useSecureRequest from "../../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import CommentData from "./CommentData";
 const CommentsContainer = () => {
    const { id } = useParams();
    const { getComments } = useSecureRequest();

@@ -1,4 +1,4 @@
-import CommentsContainer from "../../../../Containers/Dashboard/UserDashboard/CommentsContainer";
+import CommentsContainer from "../../../../Containers/Dashboard/UserDashboard/MyPosts/Comments/CommentsContainer";
 
 const Comments = () => {
    return (

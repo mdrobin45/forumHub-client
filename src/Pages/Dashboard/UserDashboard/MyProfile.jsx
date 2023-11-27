@@ -1,4 +1,4 @@
-import MyProfileContainer from "../../../Containers/Dashboard/UserDashboard/MyProfileContainer";
+import MyProfileContainer from "../../../Containers/Dashboard/UserDashboard/MyProfile/MyProfileContainer";
 
 const MyProfile = () => {
    return (

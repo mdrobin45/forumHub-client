@@ -1,10 +1,10 @@
 import { FaRegThumbsDown, FaRegThumbsUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
-import useUserPosts from "../../../Hooks/Shared/useUserPosts";
+import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
 
-const MyPostCard = ({ post }) => {
+const PostCard = ({ post }) => {
    const { deletePost } = useSecureRequest();
    const { refetch } = useUserPosts();
    const { _id, title, upVote, downVote } = post;
@@ -69,4 +69,4 @@ const MyPostCard = ({ post }) => {
    );
 };
 
-export default MyPostCard;
+export default PostCard;

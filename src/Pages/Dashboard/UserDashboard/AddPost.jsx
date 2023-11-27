@@ -1,4 +1,4 @@
-import AddPostContainer from "../../../Containers/Dashboard/UserDashboard/AddPostContainer";
+import AddPostContainer from "../../../Containers/Dashboard/UserDashboard/AddPost/AddPostContainer";
 
 const AddPost = () => {
    return (

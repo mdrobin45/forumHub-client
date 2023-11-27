@@ -2,11 +2,11 @@ import moment from "moment";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Button, Input } from "rsuite";
-import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
-import useTags from "../../../Hooks/Shared/useTags";
-import useUser from "../../../Hooks/Shared/useUser";
-import useUserPosts from "../../../Hooks/Shared/useUserPosts";
-import { showToast } from "../../../Utilities/toast";
+import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import useTags from "../../../../Hooks/Shared/useTags";
+import useUser from "../../../../Hooks/Shared/useUser";
+import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
+import { showToast } from "../../../../Utilities/toast";
 
 const AddPostContainer = () => {
    const { AddPost } = useSecureRequest();

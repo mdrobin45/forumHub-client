@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "rsuite";
-import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
-import { showToast } from "../../../Utilities/toast";
+import useSecureRequest from "../../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import { showToast } from "../../../../../Utilities/toast";
 import CommentModal from "./CommentModal";
 
 const CommentData = ({ comment }) => {
