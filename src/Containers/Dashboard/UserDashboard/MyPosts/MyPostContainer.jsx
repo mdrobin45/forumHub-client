@@ -12,11 +12,14 @@ const MyPostContainer = () => {
                      <th scope="col" className="px-6 py-3">
                         Title
                      </th>
-                     <th scope="col" className="px-6 py-3">
+                     <th scope="col" className="px-6 text-center py-3">
                         Up Vote
                      </th>
-                     <th scope="col" className="px-6 py-3">
+                     <th scope="col" className="px-6 text-center py-3">
                         Down Vote
+                     </th>
+                     <th scope="col" className="px-6 text-center py-3">
+                        Comments
                      </th>
                      <th scope="col" className="px-6 py-3">
                         Action

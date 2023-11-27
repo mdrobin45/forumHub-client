@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import usePublicRequest from "../../../../Hooks/Shared/API/PublicRequest/usePublicRequest";
 import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
 import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
 
@@ -7,6 +9,13 @@ const PostTableData = ({ post }) => {
    const { _id, title, upVote, downVote } = post;
    const { deletePost } = useSecureRequest();
    const { refetch } = useUserPosts();
+   const { countComment } = usePublicRequest();
+
+   // Count total comment
+   const { data: totalComment = 0 } = useQuery({
+      queryKey: ["commentsCounts", _id],
+      queryFn: () => countComment(_id),
+   });
 
    // Delete operation
    const handleDeletePost = (id) => {
@@ -40,8 +49,9 @@ const PostTableData = ({ post }) => {
             className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             {title}
          </th>
-         <td className="px-6 py-4">{upVote}</td>
-         <td className="px-6 py-4">{downVote}</td>
+         <td className="px-6 text-center py-4">{upVote}</td>
+         <td className="px-6 text-center py-4">{downVote}</td>
+         <td className="px-6 py-4 text-center">{totalComment.count}</td>
          <td className="px-6 py-4">
             <div className="flex items-center gap-3">
                <Link
