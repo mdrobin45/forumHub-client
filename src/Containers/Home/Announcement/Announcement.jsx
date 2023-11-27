@@ -1,8 +1,19 @@
+import usePublicRequest from "../../../Hooks/Shared/API/PublicRequest/usePublicRequest";
 import useAnnounce from "../../../Hooks/Shared/useAnnounce";
 
 const Announcement = () => {
-   let { announces } = useAnnounce();
+   let { announces, refetch } = useAnnounce();
+   const { updateAnnounce } = usePublicRequest();
    announces = announces.filter((item) => item.status === "unread");
+
+   // Handle mark as read
+   const handleMarkAsRead = (id) => {
+      updateAnnounce(id).then((res) => {
+         if (res) {
+            refetch();
+         }
+      });
+   };
    return (
       <>
          <ul
@@ -28,7 +39,13 @@ const Announcement = () => {
                   </div>
                   <h3 className="font-bold text-xl">{announce.title}</h3>
                   <p className="text-gray-500">{announce.description}</p>
-                  <button className="text-secondary">Mark as Read</button>
+                  <button
+                     onClick={() => {
+                        handleMarkAsRead(announce._id);
+                     }}
+                     className="text-secondary">
+                     Mark as Read
+                  </button>
                </li>
             ))}
          </ul>

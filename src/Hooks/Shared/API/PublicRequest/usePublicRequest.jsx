@@ -59,6 +59,14 @@ const usePublicRequest = () => {
       return data;
    };
 
+   // Get all announce
+   const updateAnnounce = async (id) => {
+      const { data } = await axiosPublic.patch(`/announce/${id}`, {
+         status: "read",
+      });
+      return data;
+   };
+
    return {
       createToken,
       saveUser,
@@ -69,6 +77,7 @@ const usePublicRequest = () => {
       tagSearchPosts,
       getTags,
       getAllAnnounce,
+      updateAnnounce,
    };
 };
 
