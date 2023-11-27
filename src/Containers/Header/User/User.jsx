@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BiLogInCircle } from "react-icons/bi";
 import { IoMdNotifications } from "react-icons/io";
 import { Link } from "react-router-dom";
+import useAnnounce from "../../../Hooks/Shared/useAnnounce";
 import useAuth from "../../../Hooks/Shared/useAuth";
 import UserDropdown from "./userDropdown";
 
@@ -9,18 +10,20 @@ const User = () => {
    const [showUserDropdown, setShowUserDropdown] = useState(false);
    const { user } = useAuth();
 
+   let { announces } = useAnnounce();
+   announces = announces.filter((item) => item.status === "unread");
    return (
       <>
          <div className="flex items-center gap-4">
-            <button
-               type="button"
+            <a
+               href="#ann_section"
                className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-secondary rounded-lg hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-secondary dark:hover:bg-secondary dark:focus:ring-secondary">
                <IoMdNotifications className="text-2xl" />
                <span className="sr-only">Notifications</span>
                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                  20
+                  {announces.length}
                </div>
-            </button>
+            </a>
 
             {!user ? (
                <Link

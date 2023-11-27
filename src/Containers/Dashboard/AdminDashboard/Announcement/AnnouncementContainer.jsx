@@ -15,6 +15,7 @@ const AnnouncementContainer = () => {
          ...data,
          authorName: dbUser?.name,
          image: dbUser?.image,
+         status: "unread",
       };
       createAnnouncement(announceData).then((res) => {
          if (res.id) {

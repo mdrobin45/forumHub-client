@@ -1,68 +1,36 @@
-import { BiSolidMessageSquareEdit } from "react-icons/bi";
-import { BsFillStopwatchFill } from "react-icons/bs";
-import { FaMessage } from "react-icons/fa6";
+import useAnnounce from "../../../Hooks/Shared/useAnnounce";
 
 const Announcement = () => {
+   let { announces } = useAnnounce();
+   announces = announces.filter((item) => item.status === "unread");
    return (
       <>
-         <ul className="flex bg-gray-200 justify-between border px-3">
-            <li className="border-r border-gray-300 py-3 flex flex-col justify-center w-[50%]">
+         <ul
+            id="ann_section"
+            className="flex mt-4 bg-gray-200 justify-between border px-3">
+            <li className=" border-gray-300 py-3 flex flex-col justify-center">
                <h2 className="text-2xl font-bold">Announcement</h2>
             </li>
-            <li className="border-r border-gray-300 py-3 w-[15%] flex flex-col justify-center items-center ">
-               <BiSolidMessageSquareEdit className="text-xl" />
-            </li>
-            <li className="border-r border-gray-300 py-3 w-[15%] flex flex-col justify-center items-center ">
-               <FaMessage />
-            </li>
-            <li className="w-[20%] border-gray-300 py-3 flex flex-col justify-center items-end">
-               <BsFillStopwatchFill className="text-xl" />
-            </li>
          </ul>
-         <ul className="flex justify-between border px-3">
-            <li className="border-r py-3 flex flex-col justify-center w-[50%]">
-               Announcement
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="w-[20%] py-3 flex flex-col justify-center items-end">
-               <p>Robin</p>
-               <p>2 month ago</p>
-            </li>
-         </ul>
-         <ul className="flex justify-between border px-3">
-            <li className="border-r py-3 flex flex-col justify-center w-[50%]">
-               Announcement
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="w-[20%] py-3 flex flex-col justify-center items-end">
-               <p>Robin</p>
-               <p>2 month ago</p>
-            </li>
-         </ul>
-         <ul className="flex justify-between border px-3">
-            <li className="border-r py-3 flex flex-col justify-center w-[50%]">
-               Announcement
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="border-r py-3 w-[15%] flex flex-col justify-center items-center ">
-               4
-            </li>
-            <li className="w-[20%] py-3 flex flex-col justify-center items-end">
-               <p>Robin</p>
-               <p>2 month ago</p>
-            </li>
+         <ul className="border px-3">
+            {announces.map((announce) => (
+               <li key={announce._id} className="py-3 border-b">
+                  <div className="flex pb-3 items-center gap-3">
+                     <img
+                        className="w-10 h-10 rounded-full"
+                        src={announce.image}
+                        alt="Rounded avatar"
+                     />
+                     <div>
+                        <p className="font-bold">{announce.authorName}</p>
+                        <p className="text-gray-500 text-sm -mt-1">Admin</p>
+                     </div>
+                  </div>
+                  <h3 className="font-bold text-xl">{announce.title}</h3>
+                  <p className="text-gray-500">{announce.description}</p>
+                  <button className="text-secondary">Mark as Read</button>
+               </li>
+            ))}
          </ul>
       </>
    );

@@ -9,6 +9,20 @@ const usePublicRequest = () => {
       return data;
    };
 
+   // Search posts by tag
+   const tagSearchPosts = async (searchTag) => {
+      const { data } = await axiosPublic.get(
+         `/posts/tag-search?search=${searchTag}`
+      );
+      return data;
+   };
+
+   // Get all tags
+   const getTags = async () => {
+      const { data } = await axiosPublic.get("/tags");
+      return data;
+   };
+
    // Get Single post
    const getSinglePostData = async (id) => {
       const { data } = await axiosPublic.get(`/posts/${id}`);
@@ -39,6 +53,12 @@ const usePublicRequest = () => {
       return data;
    };
 
+   // Get all announce
+   const getAllAnnounce = async () => {
+      const { data } = await axiosPublic.get("/announce");
+      return data;
+   };
+
    return {
       createToken,
       saveUser,
@@ -46,6 +66,9 @@ const usePublicRequest = () => {
       countComment,
       getSinglePostData,
       logoutUser,
+      tagSearchPosts,
+      getTags,
+      getAllAnnounce,
    };
 };
 

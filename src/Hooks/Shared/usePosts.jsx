@@ -6,7 +6,7 @@ const usePosts = () => {
 
    let { isPending, data: posts = [] } = useQuery({
       queryKey: ["posts"],
-      queryFn: getAllPosts,
+      queryFn: () => getAllPosts(),
    });
 
    // Reverse post

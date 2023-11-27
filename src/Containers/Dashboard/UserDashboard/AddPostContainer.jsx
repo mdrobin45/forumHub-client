@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Button, Input } from "rsuite";
 import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import useTags from "../../../Hooks/Shared/useTags";
 import useUser from "../../../Hooks/Shared/useUser";
 import useUserPosts from "../../../Hooks/Shared/useUserPosts";
 import { showToast } from "../../../Utilities/toast";
@@ -11,6 +12,7 @@ const AddPostContainer = () => {
    const { AddPost } = useSecureRequest();
    const { posts, refetch } = useUserPosts();
    const { dbUser } = useUser();
+   const { tags } = useTags();
    const { register, handleSubmit } = useForm();
 
    // Form submit
@@ -85,11 +87,17 @@ const AddPostContainer = () => {
                         {...register("tag")}
                         id="tag"
                         className="bg-white border py-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Select Tag</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
+                        <option disabled selected>
+                           Select Tag
+                        </option>
+                        {tags.map((tag) => (
+                           <option
+                              key={tag._id}
+                              className="capitalize"
+                              value={tag.name}>
+                              {tag.name}
+                           </option>
+                        ))}
                      </select>
                   </div>
                   <Button
