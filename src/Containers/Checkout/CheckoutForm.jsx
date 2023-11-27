@@ -39,7 +39,7 @@ const CheckoutForm = ({ clientSecret }) => {
       await stripe.confirmPayment({
          elements,
          confirmParams: {
-            return_url: "http://localhost:5173",
+            return_url: `${import.meta.env.VITE_SITE_URL}/user/my-profile`,
          },
       });
    };

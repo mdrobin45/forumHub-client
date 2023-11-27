@@ -70,10 +70,18 @@ const CommentData = ({ comment }) => {
                   <option value={0} selected>
                      Select Reason
                   </option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
+                  <option value="Spam or Unwanted Commercial Content">
+                     Spam or Unwanted Commercial Content
+                  </option>
+                  <option value="Hate Speech or Offensive Language">
+                     Hate Speech or Offensive Language
+                  </option>
+                  <option value="Personal Attacks or Harassment">
+                     Personal Attacks or Harassment
+                  </option>
+                  <option value="Violence or Threats">
+                     Violence or Threats
+                  </option>
                </select>
             </td>
             <td className="px-6 py-4">

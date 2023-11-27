@@ -8,12 +8,11 @@ const TagList = () => {
          <hr />
          <div className="grid grid-cols-2 gap-2 mt-4">
             {tags.map((tag) => (
-               <button
+               <h2
                   key={tag._id}
-                  type="button"
-                  className="border px-2 border-gray-200 py-1">
+                  className="border capitalize px-2 border-gray-200 py-1">
                   <span>{tag.name}</span>
-               </button>
+               </h2>
             ))}
          </div>
       </div>

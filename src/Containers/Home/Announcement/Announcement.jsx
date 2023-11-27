@@ -24,30 +24,42 @@ const Announcement = () => {
             </li>
          </ul>
          <ul className="border px-3">
-            {announces.map((announce) => (
-               <li key={announce._id} className="py-3 border-b">
-                  <div className="flex pb-3 items-center gap-3">
-                     <img
-                        className="w-10 h-10 rounded-full"
-                        src={announce.image}
-                        alt="Rounded avatar"
-                     />
-                     <div>
-                        <p className="font-bold">{announce.authorName}</p>
-                        <p className="text-gray-500 text-sm -mt-1">Admin</p>
-                     </div>
-                  </div>
-                  <h3 className="font-bold text-xl">{announce.title}</h3>
-                  <p className="text-gray-500">{announce.description}</p>
-                  <button
-                     onClick={() => {
-                        handleMarkAsRead(announce._id);
-                     }}
-                     className="text-secondary">
-                     Mark as Read
-                  </button>
-               </li>
-            ))}
+            {announces.length !== 0 ? (
+               <>
+                  {announces.map((announce) => (
+                     <li key={announce._id} className="py-3 border-b">
+                        <div className="flex pb-3 items-center gap-3">
+                           <img
+                              className="w-10 h-10 rounded-full"
+                              src={announce.image}
+                              alt="Rounded avatar"
+                           />
+                           <div>
+                              <p className="font-bold">{announce.authorName}</p>
+                              <p className="text-gray-500 text-sm -mt-1">
+                                 Admin
+                              </p>
+                           </div>
+                        </div>
+                        <h3 className="font-bold text-xl">{announce.title}</h3>
+                        <p className="text-gray-500">{announce.description}</p>
+                        <button
+                           onClick={() => {
+                              handleMarkAsRead(announce._id);
+                           }}
+                           className="text-secondary">
+                           Mark as Read
+                        </button>
+                     </li>
+                  ))}
+               </>
+            ) : (
+               <>
+                  <h2 className="text-xl py-6 font-bold text-gray-500">
+                     No Announce made yet
+                  </h2>
+               </>
+            )}
          </ul>
       </>
    );

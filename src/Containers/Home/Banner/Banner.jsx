@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import usePosts from "../../../Hooks/Shared/usePosts";
 
 const Banner = () => {
    const [searchText, setSearchText] = useState("");
+   const { searchRefetch } = usePosts(searchText);
 
    // Handle change input
    const changeHandler = (e) => {
       setSearchText(e.target.value);
+   };
+
+   // Search button handler
+   const searchBtnHandler = () => {
+      searchRefetch();
    };
    return (
       <div className="bg-primary text-white text-center py-72 flex items-center justify-center flex-col">
@@ -48,11 +54,12 @@ const Banner = () => {
                   placeholder="Search by tags"
                   required
                />
-               <Link
-                  to={{ pathname: "/", search: `?search=${searchText}` }}
+               <button
+                  type="button"
+                  onClick={searchBtnHandler}
                   className="text-white absolute end-2.5 bottom-2.5 bg-secondary focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-secondary dark:focus:ring-secondary">
                   Search
-               </Link>
+               </button>
             </div>
          </form>
       </div>
