@@ -5,13 +5,13 @@ import PostDetails from "./PostDetails/PostDetails";
 
 const SinglePostContainer = () => {
    const { id } = useParams();
-   const { isPending, postData } = useSinglePostData(id);
+   const { isPending, postData, refetch } = useSinglePostData(id);
    return (
       <>
          {!isPending ? (
             <div>
                <AuthorProfile postData={postData} />
-               <PostDetails postData={postData} />
+               <PostDetails refetch={refetch} postData={postData} />
             </div>
          ) : (
             "Loading"

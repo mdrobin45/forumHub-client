@@ -4,12 +4,16 @@ import usePublicRequest from "./API/PublicRequest/usePublicRequest";
 const useSinglePostData = (id) => {
    const { getSinglePostData } = usePublicRequest();
 
-   const { isPending, data: postData = {} } = useQuery({
-      queryKey: ["post Data"],
+   const {
+      refetch,
+      isPending,
+      data: postData = {},
+   } = useQuery({
+      queryKey: ["SinglePostData"],
       queryFn: () => getSinglePostData(id),
    });
 
-   return { isPending, postData };
+   return { isPending, postData, refetch };
 };
 
 export default useSinglePostData;

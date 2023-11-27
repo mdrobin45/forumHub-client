@@ -20,12 +20,13 @@ import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureR
 import useAuth from "../../../Hooks/Shared/useAuth";
 import { showToast } from "../../../Utilities/toast";
 
-const PostDetails = ({ postData }) => {
+const PostDetails = ({ postData, refetch }) => {
    const { id } = useParams();
    const { user } = useAuth();
    const { register, handleSubmit } = useForm();
-   const { postComment } = useSecureRequest();
-   const { title, description, upVote, downVote, tag, postTime } = postData;
+   const { postComment, increaseUpVote, increaseDownVote } = useSecureRequest();
+   const { _id, title, description, upVote, downVote, tag, postTime } =
+      postData;
 
    const shareUrl =
       "https://assignment-11-robin45r.netlify.app/assignments/654ba33466a89de3f0711c30";
@@ -46,6 +47,32 @@ const PostDetails = ({ postData }) => {
          }
       });
    };
+
+   // handle up vote
+   const handleUpvote = (id) => {
+      if (user) {
+         increaseUpVote(id).then((res) => {
+            if (res.status === 200) {
+               refetch();
+            }
+         });
+      } else {
+         showToast("Please login first", "error");
+      }
+   };
+
+   // handle down vote
+   const handleDownVote = (id) => {
+      if (user) {
+         increaseDownVote(id).then((res) => {
+            if (res.status === 200) {
+               refetch();
+            }
+         });
+      } else {
+         showToast("Please login first", "error");
+      }
+   };
    return (
       <>
          <div className="border rounded p-4 shadow-md">
@@ -53,11 +80,21 @@ const PostDetails = ({ postData }) => {
                <h2 className="text-4xl font-bold">{title}</h2>
                <div className="flex items-center gap-6">
                   <div>
-                     <FaRegThumbsUp className="text-xl" />
+                     <FaRegThumbsUp
+                        onClick={() => {
+                           handleUpvote(_id);
+                        }}
+                        className="text-xl"
+                     />
                      <span>{upVote}</span>
                   </div>
                   <div>
-                     <FaRegThumbsDown className="text-xl" />
+                     <FaRegThumbsDown
+                        onClick={() => {
+                           handleDownVote(_id);
+                        }}
+                        className="text-xl"
+                     />
                      <span>{downVote}</span>
                   </div>
                </div>

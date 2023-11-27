@@ -84,6 +84,18 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // upVote update
+   const increaseUpVote = async (id) => {
+      const { data } = await axiosSecure.put(`/posts/upvote/${id}`);
+      return data;
+   };
+
+   // upVote downVote
+   const increaseDownVote = async (id) => {
+      const { data } = await axiosSecure.put(`/posts/downvote/${id}`);
+      return data;
+   };
+
    return {
       postComment,
       changeUserMembership,
@@ -91,12 +103,14 @@ const useSecureRequest = () => {
       getUser,
       AddPost,
       userPosts,
+      increaseUpVote,
       getComments,
       reportComment,
       getAllUsers,
       makeAdmin,
       createAnnouncement,
       getReportedComments,
+      increaseDownVote,
    };
 };
 
