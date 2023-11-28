@@ -67,6 +67,12 @@ const usePublicRequest = () => {
       return data;
    };
 
+   // Filter posts by popularity
+   const filterByPopularity = async () => {
+      const { data } = await axiosPublic.get("/posts/byVote");
+      return data;
+   };
+
    return {
       createToken,
       saveUser,
@@ -78,6 +84,7 @@ const usePublicRequest = () => {
       getTags,
       getAllAnnounce,
       updateAnnounce,
+      filterByPopularity,
    };
 };
 
