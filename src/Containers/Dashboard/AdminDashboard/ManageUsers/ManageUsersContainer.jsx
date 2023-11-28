@@ -1,10 +1,25 @@
 import { useState } from "react";
+import Pagination from "../../../../Components/Pagination/Pagination";
 import useAllUsers from "../../../../Hooks/useAllUsers";
 import UsersData from "./UsersData";
 
 const ManageUsersContainer = () => {
    const [searchText, setSearchText] = useState("");
-   const { searchRefetch, users, refetch } = useAllUsers(searchText);
+   let { searchRefetch, users, refetch } = useAllUsers(searchText);
+   const [currentPage, setCurrentPage] = useState(1);
+   const dataPerPage = 10;
+
+   const startIndex = (currentPage - 1) * dataPerPage;
+   const endIndex = startIndex + dataPerPage;
+
+   const totalPage = Math.ceil(users.length / dataPerPage);
+   const pageNumbers = [];
+
+   for (let i = 1; i <= totalPage; i++) {
+      pageNumbers.push(i);
+   }
+
+   users = users.slice(startIndex, endIndex);
 
    const handleSearch = () => {
       searchRefetch();
@@ -77,6 +92,14 @@ const ManageUsersContainer = () => {
                   ))}
                </tbody>
             </table>
+            <div className="py-6 flex items-center pl-4">
+               <Pagination
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  pageNumbers={pageNumbers}
+                  totalPage={totalPage}
+               />
+            </div>
          </div>
       </>
    );

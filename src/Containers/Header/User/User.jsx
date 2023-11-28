@@ -14,7 +14,7 @@ const User = () => {
    announces = announces.filter((item) => item.status === "unread");
    return (
       <>
-         <div className="flex items-center gap-4">
+         <div className="flex w-1/4 items-center justify-end gap-4">
             <a
                href="#ann_section"
                className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-secondary rounded-lg hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-secondary dark:hover:bg-secondary dark:focus:ring-secondary">

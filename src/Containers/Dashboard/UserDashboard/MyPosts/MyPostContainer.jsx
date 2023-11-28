@@ -1,8 +1,25 @@
+import { useState } from "react";
+import Pagination from "../../../../Components/Pagination/Pagination";
 import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
 import PostTableData from "./PostTableData";
 
 const MyPostContainer = () => {
-   const { posts } = useUserPosts();
+   let { posts } = useUserPosts();
+   const [currentPage, setCurrentPage] = useState(1);
+   const dataPerPage = 10;
+
+   const startIndex = (currentPage - 1) * dataPerPage;
+   const endIndex = startIndex + dataPerPage;
+
+   const totalPage = Math.ceil(posts.length / dataPerPage);
+   const pageNumbers = [];
+
+   for (let i = 1; i <= totalPage; i++) {
+      pageNumbers.push(i);
+   }
+
+   posts = posts.slice(startIndex, endIndex);
+
    return (
       <>
          <div className="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
@@ -32,6 +49,14 @@ const MyPostContainer = () => {
                   ))}
                </tbody>
             </table>
+            <div className="py-6 flex items-center pl-4">
+               <Pagination
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  pageNumbers={pageNumbers}
+                  totalPage={totalPage}
+               />
+            </div>
          </div>
       </>
    );

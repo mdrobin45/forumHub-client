@@ -27,11 +27,10 @@ const Posts = () => {
                ))}
                <div className="flex items-center justify-center mt-6">
                   <Pagination
-                     posts={posts}
                      currentPage={currentPage}
                      setCurrentPage={setCurrentPage}
                      pageNumbers={pageNumbers}
-                     endIndex={endIndex}
+                     totalPage={totalPage}
                   />
                </div>
             </>

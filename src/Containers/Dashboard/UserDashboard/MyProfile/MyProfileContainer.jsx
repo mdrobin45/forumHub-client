@@ -1,7 +1,7 @@
 import usePosts from "../../../../Hooks/Shared/usePosts";
 import useUser from "../../../../Hooks/Shared/useUser";
 import freeUserLogo from "../../../../assets/images/free-user.png";
-import vipLogo from "../../../../assets/images/vip-card.png";
+import vipLogo from "../../../../assets/images/vip-user.png";
 import PostCard from "./PostCard";
 
 const MyProfileContainer = () => {

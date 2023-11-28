@@ -1,9 +1,8 @@
 const Pagination = ({
    pageNumbers,
    setCurrentPage,
-   posts,
    currentPage,
-   endIndex,
+   totalPage,
 }) => {
    return (
       <nav aria-label="Page navigation example">
@@ -24,13 +23,15 @@ const Pagination = ({
                      setCurrentPage(number);
                   }}
                   key={number}
-                  className="flex cursor-pointer items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                  className={`flex ${
+                     currentPage === number ? "bg-gray-200" : ""
+                  } cursor-pointer items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}>
                   {number}
                </li>
             ))}
             <li>
                <button
-                  disabled={endIndex >= posts.length}
+                  disabled={totalPage === currentPage}
                   onClick={() => {
                      setCurrentPage(currentPage + 1);
                   }}
