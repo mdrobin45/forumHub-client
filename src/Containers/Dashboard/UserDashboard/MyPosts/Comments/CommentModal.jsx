@@ -7,7 +7,7 @@ const CommentModal = ({ handleClose, open, commentText }) => {
             <Modal.Title>Comment</Modal.Title>
          </Modal.Header>
          <Modal.Body>
-            <p>{commentText}</p>
+            <p className="text-gray-500">{commentText}</p>
          </Modal.Body>
          <Modal.Footer>
             <Button onClick={handleClose} appearance="subtle">

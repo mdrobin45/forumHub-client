@@ -114,18 +114,20 @@ const PostDetails = ({ postData, refetch }) => {
                      <Tag size="md">{tag}</Tag>
                   </div>
                </div>
-               <div className="flex items-center gap-3">
-                  <h3 className="font-bold">Share : </h3>
-                  <FacebookShareButton url={shareUrl}>
-                     <FaFacebook className="text-xl" />
-                  </FacebookShareButton>
-                  <EmailShareButton>
-                     <FaEnvelope className="text-xl" />
-                  </EmailShareButton>
-                  <LinkedinShareButton>
-                     <FaLinkedin className="text-xl" />
-                  </LinkedinShareButton>
-               </div>
+               {user && (
+                  <div className="flex items-center gap-3">
+                     <h3 className="font-bold">Share : </h3>
+                     <FacebookShareButton url={shareUrl}>
+                        <FaFacebook className="text-xl" />
+                     </FacebookShareButton>
+                     <EmailShareButton>
+                        <FaEnvelope className="text-xl" />
+                     </EmailShareButton>
+                     <LinkedinShareButton>
+                        <FaLinkedin className="text-xl" />
+                     </LinkedinShareButton>
+                  </div>
+               )}
             </div>
          </div>
          <div className="border rounded p-4 shadow-md my-10">

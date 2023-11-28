@@ -1,12 +1,12 @@
-import usePosts from "../../../../Hooks/Shared/usePosts";
 import useUser from "../../../../Hooks/Shared/useUser";
+import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
 import freeUserLogo from "../../../../assets/images/free-user.png";
 import vipLogo from "../../../../assets/images/vip-user.png";
 import PostCard from "./PostCard";
 
 const MyProfileContainer = () => {
    const { dbUser } = useUser();
-   let { posts } = usePosts();
+   let { posts } = useUserPosts();
 
    posts = posts.slice(0, 3);
    return (
@@ -72,12 +72,18 @@ const MyProfileContainer = () => {
                </dl>
             </div>
          </div>
-         <h2 className="text-3xl font-bold">Recent Posts</h2>
-         <div className="grid grid-cols-3 gap-3 mt-4">
-            {posts.map((post) => (
-               <PostCard key={post} post={post} />
-            ))}
-         </div>
+         {posts.length ? (
+            <>
+               <h2 className="text-3xl font-bold">Recent Posts</h2>
+               <div className="grid grid-cols-3 gap-3 mt-4">
+                  {posts.map((post) => (
+                     <PostCard key={post} post={post} />
+                  ))}
+               </div>
+            </>
+         ) : (
+            ""
+         )}
       </>
    );
 };

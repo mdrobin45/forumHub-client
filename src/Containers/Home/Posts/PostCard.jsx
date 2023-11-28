@@ -29,7 +29,10 @@ const PostCard = ({ post }) => {
          </div>
          <div className="flex gap-7 items-center justify-between w-full">
             <div>
-               <h2 className="text-2xl font-bold">{title}</h2>
+               <Link to={`/post/${_id}`}>
+                  <h2 className="text-2xl font-bold">{title}</h2>
+               </Link>
+
                <div className="flex items-center gap-4 py-4">
                   <div className="flex gap-2 items-center">
                      <div className="flex items-center gap-2">

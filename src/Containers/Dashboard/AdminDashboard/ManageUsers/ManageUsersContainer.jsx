@@ -86,20 +86,34 @@ const ManageUsersContainer = () => {
                      </th>
                   </tr>
                </thead>
-               <tbody>
-                  {users.map((user) => (
-                     <UsersData refetch={refetch} key={user?._id} user={user} />
-                  ))}
-               </tbody>
+               {users.length ? (
+                  <tbody>
+                     {users.map((user) => (
+                        <UsersData
+                           refetch={refetch}
+                           key={user?._id}
+                           user={user}
+                        />
+                     ))}
+                  </tbody>
+               ) : (
+                  <>
+                     <p className="pl-4 py-4">No user created</p>
+                  </>
+               )}
             </table>
-            <div className="py-6 flex items-center pl-4">
-               <Pagination
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                  pageNumbers={pageNumbers}
-                  totalPage={totalPage}
-               />
-            </div>
+            {users.length > 10 ? (
+               <div className="py-6 flex items-center pl-4">
+                  <Pagination
+                     currentPage={currentPage}
+                     setCurrentPage={setCurrentPage}
+                     pageNumbers={pageNumbers}
+                     totalPage={totalPage}
+                  />
+               </div>
+            ) : (
+               ""
+            )}
          </div>
       </>
    );

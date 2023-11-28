@@ -11,7 +11,6 @@ const CommentsContainer = () => {
       queryFn: () => getComments(id),
    });
 
-   console.log(comments);
    return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -31,11 +30,17 @@ const CommentsContainer = () => {
                   </th>
                </tr>
             </thead>
-            <tbody>
-               {comments.map((comment) => (
-                  <CommentData key={comment._id} comment={comment} />
-               ))}
-            </tbody>
+            {comments.length ? (
+               <tbody>
+                  {comments.map((comment) => (
+                     <CommentData key={comment._id} comment={comment} />
+                  ))}
+               </tbody>
+            ) : (
+               <>
+                  <p className="py-4 pl-6">No comments found</p>
+               </>
+            )}
          </table>
       </div>
    );

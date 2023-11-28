@@ -43,20 +43,30 @@ const MyPostContainer = () => {
                      </th>
                   </tr>
                </thead>
-               <tbody>
-                  {posts.map((post) => (
-                     <PostTableData key={post._id} post={post} />
-                  ))}
-               </tbody>
+               {posts.length ? (
+                  <tbody>
+                     {posts.map((post) => (
+                        <PostTableData key={post._id} post={post} />
+                     ))}
+                  </tbody>
+               ) : (
+                  <>
+                     <p className="py-4 pl-6">No posts found</p>
+                  </>
+               )}
             </table>
-            <div className="py-6 flex items-center pl-4">
-               <Pagination
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage}
-                  pageNumbers={pageNumbers}
-                  totalPage={totalPage}
-               />
-            </div>
+            {posts.length > 10 ? (
+               <div className="py-6 flex items-center pl-4">
+                  <Pagination
+                     currentPage={currentPage}
+                     setCurrentPage={setCurrentPage}
+                     pageNumbers={pageNumbers}
+                     totalPage={totalPage}
+                  />
+               </div>
+            ) : (
+               ""
+            )}
          </div>
       </>
    );

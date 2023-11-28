@@ -29,14 +29,20 @@ const CommentReportContainer = () => {
                   </th>
                </tr>
             </thead>
-            <tbody>
-               {reportedComments.map((comment) => (
-                  <ReportedCommentDetails
-                     key={comment._id}
-                     commentData={comment}
-                  />
-               ))}
-            </tbody>
+            {reportedComments.length ? (
+               <tbody>
+                  {reportedComments.map((comment) => (
+                     <ReportedCommentDetails
+                        key={comment._id}
+                        commentData={comment}
+                     />
+                  ))}
+               </tbody>
+            ) : (
+               <>
+                  <p className="pl-4 py-4">No reported comments</p>
+               </>
+            )}
          </table>
       </div>
    );
