@@ -123,6 +123,13 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Add new tag
+   const addTag = async (tag) => {
+      console.log(tag);
+      const { data } = await axiosSecure.post("/tags", { tag });
+      return data;
+   };
+
    return {
       totalUsers,
       totalPosts,
@@ -134,6 +141,7 @@ const useSecureRequest = () => {
       AddPost,
       userPosts,
       increaseUpVote,
+      addTag,
       getComments,
       reportComment,
       getAllUsers,

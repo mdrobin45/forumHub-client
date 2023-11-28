@@ -13,7 +13,7 @@ const AddPostContainer = () => {
    const { posts, refetch } = useUserPosts();
    const { dbUser } = useUser();
    const { tags } = useTags();
-   const { register, handleSubmit } = useForm();
+   const { register, reset, handleSubmit } = useForm();
 
    // Form submit
    const formSubmit = (data) => {
@@ -24,6 +24,7 @@ const AddPostContainer = () => {
          AddPost(postInfo).then((res) => {
             if (res.id) {
                refetch();
+               reset();
                showToast("Post added", "success");
             }
          });

@@ -4,7 +4,9 @@ import { FaComments } from "react-icons/fa";
 import { FaUsersLine } from "react-icons/fa6";
 import FeaturedCard from "../../../../Components/Dashboard/FeaturedCard";
 import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import AddTag from "./AddTag/AddTag";
 import Profile from "./Profile/Profile";
+import Statistics from "./Statistics/Statistics";
 
 const AdminProfileContainer = () => {
    const { totalUsers, totalPosts, totalComments } = useSecureRequest();
@@ -46,9 +48,11 @@ const AdminProfileContainer = () => {
                name="Total Users"
             />
          </div>
-         <div>
+         <div className="flex items-start gap-4 py-20">
             <Profile />
+            <AddTag />
          </div>
+         <Statistics />
       </div>
    );
 };
