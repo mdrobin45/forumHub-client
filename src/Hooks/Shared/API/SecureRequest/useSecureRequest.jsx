@@ -12,10 +12,11 @@ const useSecureRequest = () => {
    };
 
    // update user membership after payment
-   const changeUserMembership = async () => {
-      const { data } = await axiosSecure.patch(`/users?email=${user?.email}`, {
-         isPremiumMember: true,
-      });
+   const patchUserData = async (updateInfo, email) => {
+      const { data } = await axiosSecure.patch(
+         `/users?email=${email}`,
+         updateInfo
+      );
 
       return data;
    };
@@ -104,9 +105,30 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Total users
+   const totalUsers = async () => {
+      const { data } = await axiosSecure.get("/users/total");
+      return data;
+   };
+
+   // Total Posts
+   const totalPosts = async () => {
+      const { data } = await axiosSecure.get("/posts/total");
+      return data;
+   };
+
+   // Total Comments
+   const totalComments = async () => {
+      const { data } = await axiosSecure.get("/comments/total");
+      return data;
+   };
+
    return {
+      totalUsers,
+      totalPosts,
+      totalComments,
       postComment,
-      changeUserMembership,
+      patchUserData,
       deletePost,
       getUser,
       AddPost,

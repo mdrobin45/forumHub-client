@@ -6,9 +6,11 @@ import {
 import { useEffect, useState } from "react";
 import { Loader } from "rsuite";
 import useSecureRequest from "../../Hooks/Shared/API/SecureRequest/useSecureRequest";
+import useAuth from "../../Hooks/Shared/useAuth";
 
 const CheckoutForm = ({ clientSecret }) => {
-   const { changeUserMembership } = useSecureRequest();
+   const { user } = useAuth();
+   const { patchUserData } = useSecureRequest();
    const stripe = useStripe();
    const elements = useElements();
 
@@ -28,7 +30,9 @@ const CheckoutForm = ({ clientSecret }) => {
       e.preventDefault();
 
       // Update user membership plan
-      changeUserMembership().then((res) => console.log(res));
+      patchUserData({ isPremiumMember: true }, user?.email).then((res) =>
+         console.log(res)
+      );
 
       if (!stripe || !elements) {
          return;
