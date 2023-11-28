@@ -26,7 +26,7 @@ const usePosts = (searchText) => {
       } else {
          setPosts(allPosts);
       }
-   }, [allPosts, searchedPosts]);
+   }, [searchText, allPosts, searchedPosts]);
 
    // Reverse post
    posts = posts.toReversed();

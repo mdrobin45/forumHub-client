@@ -4,11 +4,11 @@ import AuthFormFooter from "../../Components/FormElements/AuthFormFooter/AuthFor
 import AuthFormHeader from "../../Components/FormElements/AuthFormHeader/AuthFormHeader";
 import GoogleLogin from "../../Components/FormElements/SocialLogin/GoogleLogin";
 import SubmitButton from "../../Components/FormElements/SubmitButton";
-import useRegister from "../../Hooks/useRegister";
+import useLogin from "../../Hooks/useLogin";
 
 const LoginForm = () => {
    const { visible, setVisible, register, handleSubmit, onSubmit, errors } =
-      useRegister();
+      useLogin();
    return (
       <div className="mx-auto w-[26rem] border rounded-md shadow-md">
          <AuthFormHeader heading="Sign In" />
