@@ -130,14 +130,28 @@ const useSecureRequest = () => {
       return data;
    };
 
+   // Delete comment request
+   const deleteComment = async (id) => {
+      const { data } = await axiosSecure.delete(`/comments/${id}`);
+      return data;
+   };
+
+   // Delete comment request
+   const deleteReportComment = async (id) => {
+      const { data } = await axiosSecure.delete(`/comments/report/${id}`);
+      return data;
+   };
+
    return {
       totalUsers,
       totalPosts,
       totalComments,
       postComment,
       patchUserData,
+      deleteReportComment,
       deletePost,
       getUser,
+      deleteComment,
       AddPost,
       userPosts,
       increaseUpVote,

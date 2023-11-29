@@ -9,10 +9,11 @@ const CommentData = ({ comment }) => {
    const [open, setOpen] = useState(false);
    const [textExceed, setTextExceed] = useState(false);
    const [reason, setReason] = useState(false);
-   const { commenterEmail, text } = comment;
+   const { _id, commenterEmail, text } = comment;
    const [reportData, setReportData] = useState({
       commenterEmail,
       comment: text,
+      commentId: _id,
    });
 
    const handleClose = () => setOpen(false);

@@ -1,14 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import Pagination from "../../../../Components/Pagination/Pagination";
 import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
 import ReportedCommentDetails from "./ReportedCommentDetails";
 
 const CommentReportContainer = () => {
    const { getReportedComments } = useSecureRequest();
+   const [currentPage, setCurrentPage] = useState(1);
+   const dataPerPage = 10;
 
-   const { data: reportedComments = [] } = useQuery({
+   let { refetch, data: reportedComments = [] } = useQuery({
       queryKey: ["reportedComments"],
       queryFn: getReportedComments,
    });
+
+   reportedComments = reportedComments.toReversed();
+
+   const startIndex = (currentPage - 1) * dataPerPage;
+   const endIndex = startIndex + dataPerPage;
+
+   const totalPage = Math.ceil(reportedComments.length / dataPerPage);
+   const pageNumbers = [];
+
+   for (let i = 1; i <= totalPage; i++) {
+      pageNumbers.push(i);
+   }
+
+   reportedComments = reportedComments.slice(startIndex, endIndex);
 
    return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -35,6 +53,7 @@ const CommentReportContainer = () => {
                      <ReportedCommentDetails
                         key={comment._id}
                         commentData={comment}
+                        refetch={refetch}
                      />
                   ))}
                </tbody>
@@ -44,6 +63,18 @@ const CommentReportContainer = () => {
                </>
             )}
          </table>
+         {reportedComments.length ? (
+            <div className="py-6 flex items-center pl-4">
+               <Pagination
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  pageNumbers={pageNumbers}
+                  totalPage={totalPage}
+               />
+            </div>
+         ) : (
+            ""
+         )}
       </div>
    );
 };

@@ -19,7 +19,7 @@ const Posts = () => {
       } else {
          setFilterPosts(allPosts);
       }
-   }, [isFilter]);
+   }, [isFilter, isPending]);
 
    const posts = filterPosts.length ? filterPosts : allPosts;
 

@@ -1,14 +1,53 @@
 import { Button } from "rsuite";
+import Swal from "sweetalert2";
 import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
 
-const ReportedCommentDetails = ({ commentData }) => {
-   const { commenterEmail: email, comment, reason } = commentData;
+const ReportedCommentDetails = ({ commentData, refetch }) => {
+   const {
+      _id,
+      commenterEmail: email,
+      comment,
+      reason,
+      commentId,
+   } = commentData;
 
-   const { patchUserData } = useSecureRequest();
+   const { patchUserData, deleteComment, deleteReportComment } =
+      useSecureRequest();
 
    // Handle user block
    const handleUserBlock = () => {
       patchUserData({ isBlock: true }, email);
+   };
+
+   // Handle delete comment
+   const handleDelete = (id, reportId) => {
+      Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+         if (result.isConfirmed) {
+            deleteComment(id).then((res) => {
+               if (!res.id) {
+                  return;
+               }
+            });
+            deleteReportComment(reportId).then((res) => {
+               if (res.id) {
+                  refetch();
+                  Swal.fire({
+                     title: "Deleted!",
+                     text: "Your file has been deleted.",
+                     icon: "success",
+                  });
+               }
+            });
+         }
+      });
    };
 
    return (
@@ -29,6 +68,9 @@ const ReportedCommentDetails = ({ commentData }) => {
                Block User
             </Button>
             <Button
+               onClick={() => {
+                  handleDelete(commentId, _id);
+               }}
                appearance="primary"
                color="yellow"
                className="bg-primary ml-3 text-white hover:bg-primary hover:text-white">
