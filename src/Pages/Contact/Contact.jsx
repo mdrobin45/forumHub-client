@@ -1,7 +1,8 @@
+import image from "../../assets/images/coming-soon.svg";
 const Contact = () => {
    return (
-      <div>
-         <h2>Contact</h2>
+      <div className=" h-[calc(90vh)] flex items-center justify-center">
+         <img className="w-2/4" src={image} alt="Coming soon" />
       </div>
    );
 };

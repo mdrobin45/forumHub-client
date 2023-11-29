@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 import { Checkbox } from "rsuite";
 import Pagination from "../../../Components/Pagination/Pagination";
 import usePublicRequest from "../../../Hooks/Shared/API/PublicRequest/usePublicRequest";
@@ -60,7 +61,9 @@ const Posts = () => {
                )}
             </>
          ) : (
-            "Loading"
+            <div className="h-screen flex flex-col items-center justify-center">
+               <ClipLoader color="#EF1D26" />
+            </div>
          )}
       </div>
    );

@@ -26,7 +26,7 @@ const CommentReportContainer = () => {
       pageNumbers.push(i);
    }
 
-   reportedComments = reportedComments.slice(startIndex, endIndex);
+   const displayReportedComments = reportedComments.slice(startIndex, endIndex);
 
    return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -49,7 +49,7 @@ const CommentReportContainer = () => {
             </thead>
             {reportedComments.length ? (
                <tbody>
-                  {reportedComments.map((comment) => (
+                  {displayReportedComments.map((comment) => (
                      <ReportedCommentDetails
                         key={comment._id}
                         commentData={comment}
@@ -63,7 +63,7 @@ const CommentReportContainer = () => {
                </>
             )}
          </table>
-         {reportedComments.length ? (
+         {reportedComments.length > 10 ? (
             <div className="py-6 flex items-center pl-4">
                <Pagination
                   currentPage={currentPage}

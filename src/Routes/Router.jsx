@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import PageNotFound from "../Containers/PageNotFound/PageNotFound";
 import Dashboard from "../Layouts/Dashboard";
 import MainLayout from "../Layouts/MainLayout";
 import Blog from "../Pages/Blog/Blog";
@@ -18,12 +19,14 @@ import Login from "../Pages/Login/Login";
 import Membership from "../Pages/Membership/Membership";
 import Register from "../Pages/Register/Register";
 import SinglePost from "../Pages/SinglePost/SinglePost";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
    {
       path: "/",
       element: <MainLayout />,
+      errorElement: <PageNotFound />,
       children: [
          {
             path: "/",
@@ -119,19 +122,35 @@ const router = createBrowserRouter([
       children: [
          {
             path: "admin-profile",
-            element: <AdminProfile />,
+            element: (
+               <AdminRoute>
+                  <AdminProfile />
+               </AdminRoute>
+            ),
          },
          {
             path: "manage-users",
-            element: <ManageUsers />,
+            element: (
+               <AdminRoute>
+                  <ManageUsers />
+               </AdminRoute>
+            ),
          },
          {
             path: "create-announce",
-            element: <CreateAnnouncement />,
+            element: (
+               <AdminRoute>
+                  <CreateAnnouncement />
+               </AdminRoute>
+            ),
          },
          {
             path: "reported-comments",
-            element: <CommentReport />,
+            element: (
+               <AdminRoute>
+                  <CommentReport />
+               </AdminRoute>
+            ),
          },
       ],
    },

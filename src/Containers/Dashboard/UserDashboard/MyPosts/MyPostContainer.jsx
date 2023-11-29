@@ -18,7 +18,7 @@ const MyPostContainer = () => {
       pageNumbers.push(i);
    }
 
-   posts = posts.slice(startIndex, endIndex);
+   const displayPosts = posts.slice(startIndex, endIndex);
 
    return (
       <>
@@ -45,7 +45,7 @@ const MyPostContainer = () => {
                </thead>
                {posts.length ? (
                   <tbody>
-                     {posts.map((post) => (
+                     {displayPosts.map((post) => (
                         <PostTableData key={post._id} post={post} />
                      ))}
                   </tbody>

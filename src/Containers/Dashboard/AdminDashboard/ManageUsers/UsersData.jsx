@@ -47,7 +47,6 @@ const UsersData = ({ user, refetch }) => {
                <Button
                   onClick={handleMakeAdmin}
                   appearance="primary"
-                  color="#6A7BF0"
                   className="bg-secondary text-white hover:bg-secondary hover:text-white">
                   Make Admin
                </Button>

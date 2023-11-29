@@ -19,7 +19,7 @@ const ManageUsersContainer = () => {
       pageNumbers.push(i);
    }
 
-   users = users.slice(startIndex, endIndex);
+   const displayUsers = users.slice(startIndex, endIndex);
 
    const handleSearch = () => {
       searchRefetch();
@@ -88,7 +88,7 @@ const ManageUsersContainer = () => {
                </thead>
                {users.length ? (
                   <tbody>
-                     {users.map((user) => (
+                     {displayUsers.map((user) => (
                         <UsersData
                            refetch={refetch}
                            key={user?._id}
