@@ -14,7 +14,7 @@ const User = () => {
    announces = announces.filter((item) => item.status === "unread");
    return (
       <>
-         <div className="flex w-1/4 items-center justify-end gap-4">
+         <div className="flex lg:w-1/4 items-center justify-end gap-4">
             <a
                href="#ann_section"
                className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-secondary rounded-lg hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-secondary dark:hover:bg-secondary dark:focus:ring-secondary">
@@ -33,7 +33,7 @@ const User = () => {
                   <BiLogInCircle className="text-xl ml-2" />
                </Link>
             ) : (
-               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+               <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <div className="relative ml-3">
                      <div className="flex gap-2 items-center">
                         <button
