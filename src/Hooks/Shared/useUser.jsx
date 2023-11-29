@@ -7,14 +7,18 @@ const useUser = () => {
    const { getUser } = useSecureRequest();
 
    // Request server for getting user role
-   const { isPending, data: dbUser = {} } = useQuery({
+   const {
+      refetch,
+      isPending,
+      data: dbUser = {},
+   } = useQuery({
       queryKey: ["userRole", user],
       queryFn: () => getUser(user?.email),
    });
 
    const userRole = dbUser?.role;
 
-   return { userRole, isPending, dbUser };
+   return { userRole, isPending, dbUser, refetch };
 };
 
 export default useUser;

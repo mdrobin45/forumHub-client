@@ -1,14 +1,20 @@
+import { useState } from "react";
 import useUser from "../../../../Hooks/Shared/useUser";
 import useUserPosts from "../../../../Hooks/Shared/useUserPosts";
 import freeUserLogo from "../../../../assets/images/free-user.png";
 import vipLogo from "../../../../assets/images/vip-user.png";
+import BioModal from "./BioModal";
 import PostCard from "./PostCard";
 
 const MyProfileContainer = () => {
    const { dbUser } = useUser();
    let { posts } = useUserPosts();
+   const [open, setOpen] = useState(false);
 
    posts = posts.slice(0, 3);
+
+   const handleClose = () => setOpen(false);
+   const handleOpen = () => setOpen(true);
    return (
       <>
          <div className="bg-white mx-6 lg:w-3/4 lg:mx-auto my-20 overflow-hidden shadow rounded-lg border">
@@ -60,17 +66,15 @@ const MyProfileContainer = () => {
                      </dd>
                   </div>
                   <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                     <dt className="text-sm font-medium text-gray-500">Bio</dt>
+                     <dt className="text-sm font-medium text-gray-500">
+                        <span>Bio</span>
+                        <br />
+                        <button onClick={handleOpen} className="text-secondary">
+                           Edit
+                        </button>
+                     </dt>
                      <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
+                        {dbUser?.bio}
                      </dd>
                   </div>
                   <div className="py-3 flex flex-col md:flex-row items-center justify-center sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -84,6 +88,11 @@ const MyProfileContainer = () => {
                            <img src={freeUserLogo} alt="VIP" />
                         )}
                      </div>
+                     <BioModal
+                        bio={dbUser?.bio}
+                        handleClose={handleClose}
+                        open={open}
+                     />
                   </div>
                </dl>
             </div>

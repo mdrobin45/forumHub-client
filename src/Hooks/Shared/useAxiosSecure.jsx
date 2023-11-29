@@ -22,13 +22,14 @@ const useAxiosSecure = () => {
       (response) => {
          return response;
       },
-      (err) => {
+      async (err) => {
          if (err.response.status === 401 || err.response.status === 403) {
-            logOut().then(() => {
+            await logOut().then(() => {
                toast.error("Unauthorized access");
                navigate("/login");
             });
          }
+         return Promise.reject(err);
       }
    );
 

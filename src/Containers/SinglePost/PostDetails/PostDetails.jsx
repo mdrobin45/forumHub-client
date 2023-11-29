@@ -28,8 +28,7 @@ const PostDetails = ({ postData, refetch }) => {
    const { _id, title, description, upVote, downVote, tag, postTime } =
       postData;
 
-   const shareUrl =
-      "https://assignment-11-robin45r.netlify.app/assignments/654ba33466a89de3f0711c30";
+   const shareUrl = `${import.meta.env.VITE_SITE_URL}/${id}`;
 
    // Submit comment
    const onSubmit = (data) => {
