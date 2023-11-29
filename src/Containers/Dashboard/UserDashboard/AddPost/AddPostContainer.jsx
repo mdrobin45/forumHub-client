@@ -58,7 +58,7 @@ const AddPostContainer = () => {
          ) : (
             <>
                <form
-                  className="w-2/4 shadow-md border rounded-md mx-auto my-10 p-4"
+                  className="md:w-2/4 shadow-md border rounded-md mx-auto my-10 p-4"
                   onSubmit={handleSubmit(formSubmit)}>
                   <h4 className="text-2xl font-bold text-center">Add Post</h4>
                   <div className="pb-3">

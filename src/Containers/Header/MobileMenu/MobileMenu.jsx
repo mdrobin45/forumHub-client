@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useUser from "../../../Hooks/Shared/useUser";
 import logo from "../../../assets/images/logo.svg";
 import User from "../User/User";
 
 const MobileMenu = () => {
+   const { userRole } = useUser();
    const [openMenu, setOpenMenu] = useState(false);
    return (
-      <nav className="bg-white border-gray-200 dark:bg-gray-900">
+      <nav className="bg-white z-10 border-gray-200 dark:bg-gray-900">
          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link
                to="/"
@@ -57,6 +59,18 @@ const MobileMenu = () => {
                         className="rounded-md uppercase px-3 py-2 text-sm font-medium"
                         aria-current="page">
                         Membership
+                     </NavLink>
+                  </li>
+                  <li>
+                     <NavLink
+                        to={
+                           userRole === "admin"
+                              ? "/admin/admin-profile"
+                              : "/user/my-profile"
+                        }
+                        className="rounded-md uppercase px-3 py-2 text-sm font-medium"
+                        aria-current="page">
+                        Dashboard
                      </NavLink>
                   </li>
                   <li>

@@ -3,7 +3,7 @@ import useUser from "../../../../../Hooks/Shared/useUser";
 const Profile = () => {
    const { dbUser } = useUser();
    return (
-      <div className="bg-white w-2/4 overflow-hidden shadow rounded-lg border">
+      <div className="bg-white md:w-2/4 overflow-hidden shadow rounded-lg border">
          <div className="flex items-center justify-between">
             <div className="px-4 py-5 sm:px-6">
                <h3 className="text-lg leading-6 font-medium text-gray-900">

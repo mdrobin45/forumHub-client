@@ -31,13 +31,13 @@ const PostTableData = ({ post }) => {
          if (result.isConfirmed) {
             deletePost(id).then((res) => {
                if (res.id) {
+                  Swal.fire({
+                     title: "Deleted!",
+                     text: "Your file has been deleted.",
+                     icon: "success",
+                  });
                   refetch();
                }
-            });
-            Swal.fire({
-               title: "Deleted!",
-               text: "Your file has been deleted.",
-               icon: "success",
             });
          }
       });

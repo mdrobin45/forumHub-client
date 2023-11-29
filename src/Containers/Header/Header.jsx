@@ -14,7 +14,6 @@ const Header = () => {
                         <img className="w-full" src={logo} alt="Logo" />
                      </Link>
                   </div>
-
                   <NavLinks />
                   <User />
                </div>

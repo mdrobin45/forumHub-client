@@ -31,7 +31,7 @@ const AdminProfileContainer = () => {
 
    return (
       <div>
-         <div className="grid grid-cols-3 gap-6">
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FeaturedCard
                icon={<CgMenuGridR />}
                counter={posts}
@@ -48,7 +48,7 @@ const AdminProfileContainer = () => {
                name="Total Users"
             />
          </div>
-         <div className="flex items-start gap-4 py-20">
+         <div className="flex flex-col md:flex-row items-start gap-4 py-20">
             <Profile />
             <AddTag />
          </div>

@@ -16,14 +16,14 @@ const Banner = () => {
    };
    return (
       <div className="bg-primary text-white text-center py-72 flex items-center justify-center flex-col">
-         <h2 className="text-6xl leading-[130%] uppercase font-bold">
+         <h2 className="text-2xl md:text-4xl lg:text-6xl leading-[130%] uppercase font-bold">
             Welcome to DisputeHub
          </h2>
          <p className="text-2xl italic pt-4">
             The most popular forum in bangladesh
          </p>
 
-         <form className=" w-2/4 mt-7">
+         <form className=" w-full px-10 md:px-0 md:w-2/4 mt-7">
             <label
                htmlFor="default-search"
                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">

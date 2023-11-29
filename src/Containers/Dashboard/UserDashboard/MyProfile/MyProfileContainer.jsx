@@ -73,15 +73,17 @@ const MyProfileContainer = () => {
                         anim id est laborum.
                      </dd>
                   </div>
-                  <div className="py-3 flex items-center justify-center sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <div className="py-3 flex flex-col md:flex-row items-center justify-center sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                      <dt className="text-sm font-medium text-gray-500">
                         My Badge
                      </dt>
-                     {dbUser.isPremiumMember ? (
-                        <img src={vipLogo} alt="VIP" />
-                     ) : (
-                        <img src={freeUserLogo} alt="VIP" />
-                     )}
+                     <div>
+                        {dbUser.isPremiumMember ? (
+                           <img src={vipLogo} alt="VIP" />
+                        ) : (
+                           <img src={freeUserLogo} alt="VIP" />
+                        )}
+                     </div>
                   </div>
                </dl>
             </div>
@@ -89,7 +91,7 @@ const MyProfileContainer = () => {
          {posts.length ? (
             <>
                <h2 className="text-3xl font-bold">Recent Posts</h2>
-               <div className="grid grid-cols-3 gap-3 mt-4">
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
                   {posts.map((post) => (
                      <PostCard key={post} post={post} />
                   ))}
