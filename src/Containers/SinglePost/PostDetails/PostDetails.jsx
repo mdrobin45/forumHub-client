@@ -109,7 +109,7 @@ const PostDetails = ({ postData, refetch }) => {
             <p className="pb-3">{`${description}`}</p>
             <hr />
 
-            <div className="flex items-center justify-between pt-6">
+            <div className="flex flex-col md:flex-row gap-y-4 md:gap-y-0 items-center justify-between pt-6">
                <div className="flex items-center gap-6">
                   <p className="flex items-center gap-1">
                      <CiStopwatch className="text-xl" />

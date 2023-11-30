@@ -5,7 +5,7 @@ const usePosts = () => {
    const { getAllPosts } = usePublicRequest();
 
    let {
-      refetch,
+      refetch: allPostRefetch,
       isPending,
       data: allPosts = [],
    } = useQuery({
@@ -16,7 +16,7 @@ const usePosts = () => {
    // Reverse post
    const posts = allPosts.toReversed();
 
-   return { isPending, posts, refetch };
+   return { isPending, posts, allPostRefetch };
 };
 
 export default usePosts;
