@@ -1,15 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import usePublicRequest from "./API/PublicRequest/usePublicRequest";
 
-const usePosts = (searchText) => {
-   const { getAllPosts, tagSearchPosts } = usePublicRequest();
-   let [posts, setPosts] = useState([]);
-
-   const { refetch: searchRefetch, data: searchedPosts = [] } = useQuery({
-      queryKey: ["searchedPosts"],
-      queryFn: () => tagSearchPosts(searchText),
-   });
+const usePosts = () => {
+   const { getAllPosts } = usePublicRequest();
 
    let {
       refetch,
@@ -20,18 +13,10 @@ const usePosts = (searchText) => {
       queryFn: () => getAllPosts(),
    });
 
-   useEffect(() => {
-      if (searchedPosts.length) {
-         setPosts(searchedPosts);
-      } else {
-         setPosts(allPosts);
-      }
-   }, [searchText, searchedPosts]);
-
    // Reverse post
-   posts = posts.toReversed();
+   const posts = allPosts.toReversed();
 
-   return { isPending, posts, refetch, searchRefetch };
+   return { isPending, posts, refetch };
 };
 
 export default usePosts;
