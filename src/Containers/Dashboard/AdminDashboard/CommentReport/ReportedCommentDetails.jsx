@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "rsuite";
 import Swal from "sweetalert2";
 import useSecureRequest from "../../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
@@ -13,10 +14,20 @@ const ReportedCommentDetails = ({ commentData, refetch }) => {
 
    const { patchUserData, deleteComment, deleteReportComment } =
       useSecureRequest();
+   const { getUser } = useSecureRequest();
+
+   const { refetch: userRefetch, data: user = {} } = useQuery({
+      queryKey: ["commenter", email],
+      queryFn: () => getUser(email),
+   });
 
    // Handle user block
    const handleUserBlock = () => {
-      patchUserData({ isBlock: true }, email);
+      patchUserData({ isBlock: true }, email).then(() => userRefetch());
+   };
+   // Handle user block
+   const handleUserUnblock = () => {
+      patchUserData({ isBlock: false }, email).then(() => userRefetch());
    };
 
    // Handle delete comment
@@ -60,13 +71,24 @@ const ReportedCommentDetails = ({ commentData, refetch }) => {
          <td className="px-6 py-4">{comment}</td>
          <td className="px-6 py-4">{reason}</td>
          <td className="px-6 py-4">
-            <Button
-               onClick={handleUserBlock}
-               appearance="primary"
-               color="yellow"
-               className="bg-red-500 text-white hover:bg-red-600 hover:text-white">
-               Block User
-            </Button>
+            {user.isBlock ? (
+               <Button
+                  onClick={handleUserUnblock}
+                  appearance="primary"
+                  color="yellow"
+                  className="bg-red-500 text-white hover:bg-red-600 hover:text-white">
+                  Unblock
+               </Button>
+            ) : (
+               <Button
+                  onClick={handleUserBlock}
+                  appearance="primary"
+                  color="yellow"
+                  className="bg-red-500 text-white hover:bg-red-600 hover:text-white">
+                  Block User
+               </Button>
+            )}
+
             <Button
                onClick={() => {
                   handleDelete(commentId, _id);

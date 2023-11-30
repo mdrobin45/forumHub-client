@@ -3,7 +3,7 @@ import useSecureRequest from "./API/SecureRequest/useSecureRequest";
 
 const useUserPosts = () => {
    const { userPosts } = useSecureRequest();
-   const {
+   let {
       isPending,
       refetch,
       data: posts = [],
@@ -12,6 +12,7 @@ const useUserPosts = () => {
       queryFn: userPosts,
    });
 
+   posts = posts.toReversed();
    return { isPending, posts, refetch };
 };
 

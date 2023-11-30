@@ -18,11 +18,13 @@ import {
 import { Tag } from "rsuite";
 import useSecureRequest from "../../../Hooks/Shared/API/SecureRequest/useSecureRequest";
 import useAuth from "../../../Hooks/Shared/useAuth";
+import useUser from "../../../Hooks/Shared/useUser";
 import { showToast } from "../../../Utilities/toast";
 
 const PostDetails = ({ postData, refetch }) => {
    const { id } = useParams();
    const { user } = useAuth();
+   const { dbUser } = useUser();
    const { register, handleSubmit } = useForm();
    const { postComment, increaseUpVote, increaseDownVote } = useSecureRequest();
    const { _id, title, description, upVote, downVote, tag, postTime } =
@@ -32,6 +34,11 @@ const PostDetails = ({ postData, refetch }) => {
 
    // Submit comment
    const onSubmit = (data) => {
+      if (dbUser?.isBlock) {
+         showToast("You are temporarily blocked! Contact with admin", "error");
+         return;
+      }
+
       const commentInfo = {
          commenterEmail: user?.email,
          text: data.commentText,

@@ -2,7 +2,7 @@ import { FaEnvelope, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 
 const AuthorProfile = ({ postData }) => {
-   const { name, image } = postData.author;
+   const { name, image, bio } = postData.author;
    return (
       <div className="p-6 dark:bg-gray-900 dark:text-gray-100 border rounded shadow-md my-10">
          <div className=" flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
@@ -18,12 +18,7 @@ const AuthorProfile = ({ postData }) => {
                <h4 className="text-lg font-semibold text-center md:text-left">
                   {name}
                </h4>
-               <p className="dark:text-gray-400">
-                  Sed non nibh iaculis, posuere diam vitae, consectetur neque.
-                  Integer velit ligula, semper sed nisl in, cursus commodo elit.
-                  Pellentesque sit amet mi luctus ligula euismod lobortis
-                  ultricies et nibh.
-               </p>
+               <p className="dark:text-gray-400">{bio}</p>
                <div className="flex pt-4 space-x-4 align-center">
                   <a
                      href="#"

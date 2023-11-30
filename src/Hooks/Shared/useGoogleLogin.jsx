@@ -24,7 +24,11 @@ const useGoogleLogin = () => {
                };
                saveUser(userInfo);
                showToast("Login Successful!", "success");
-               navigate(state ? state.prevUrl : "/");
+               if (state !== null) {
+                  navigate(state.from);
+               } else {
+                  navigate("/");
+               }
             }
          })
          .catch((err) => {

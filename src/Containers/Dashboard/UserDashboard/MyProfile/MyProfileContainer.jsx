@@ -102,7 +102,7 @@ const MyProfileContainer = () => {
                <h2 className="text-3xl font-bold">Recent Posts</h2>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
                   {posts.map((post) => (
-                     <PostCard key={post} post={post} />
+                     <PostCard key={post._id} post={post} />
                   ))}
                </div>
             </>

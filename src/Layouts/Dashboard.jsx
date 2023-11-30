@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CgMenuGridR } from "react-icons/cg";
-import { FaUserCircle, FaUsers } from "react-icons/fa";
+import { FaHome, FaSignOutAlt, FaUserCircle, FaUsers } from "react-icons/fa";
 import { GrAnnounce } from "react-icons/gr";
 import { IoIosAddCircle } from "react-icons/io";
 import { RiSpam2Fill } from "react-icons/ri";
 import { NavLink, Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../Context/AuthContextProvider";
 import useUser from "../Hooks/Shared/useUser";
+import "./style.css";
 
 const userLinks = [
    {
@@ -49,6 +52,14 @@ const adminLinks = [
 const Dashboard = () => {
    const { userRole } = useUser();
    const [showMenu, setShowMenu] = useState(false);
+   const { logOut } = useContext(AuthContext);
+
+   // Logout
+   const handleLogOut = () => {
+      logOut().then(() => {
+         toast.error("Your are logged out!");
+      });
+   };
    return (
       <>
          <div className="flex items-center justify-end">
@@ -79,7 +90,7 @@ const Dashboard = () => {
             } fixed top-0 left-0 z-40 w-64 h-screen transition-transform sm:translate-x-0`}
             aria-label="Sidebar">
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-               <ul className="space-y-2 font-medium">
+               <ul id="dashboardLinks" className="space-y-2 font-medium">
                   {userRole === "member" && (
                      <>
                         {userLinks.map((link, index) => (
@@ -108,6 +119,23 @@ const Dashboard = () => {
                         ))}
                      </>
                   )}
+                  <li>
+                     <button
+                        onClick={handleLogOut}
+                        className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <FaSignOutAlt />
+                        <span className="ms-3">Sign Out</span>
+                     </button>
+                  </li>
+                  <hr />
+                  <li>
+                     <NavLink
+                        to="/"
+                        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <FaHome />
+                        <span className="ms-3">Home</span>
+                     </NavLink>
+                  </li>
                </ul>
             </div>
          </aside>
