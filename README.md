@@ -51,3 +51,7 @@ https://forum-server.vercel.app
 ## Live Link
 
 https://forum-robin45.netlify.app
+
+Admin credential:
+**Username:** admin@gmail.com
+**Password:** Admin1122#
